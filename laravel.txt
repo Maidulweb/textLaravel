@@ -1,0 +1,25 @@
+Authentication ( auth )
+composer require laravel/ui --dev
+php artisan ui vue --auth
+composer dump-autoload
+
+
+
+
+
+public function functionname(Request $request){
+
+        $request->validate([
+            'name' => 'required|regex:/^[a-z A-Z]+$/u|max:255|min:3',
+            'email' => 'required',
+            'phone_number' => 'required|numeric',
+            'university' => 'required|regex:/^[a-z A-Z]+$/u',
+            'ielts' => 'nullable',
+        ]);
+
+
+        $newvariable = new Modelname;
+        $newvariable ->name = $request->name ;
+        $newvariable ->save();
+        return redirect()->route('mi7')->with('status', 'Application submitted successfully!');
+    }
