@@ -2,6 +2,7 @@ Authentication ( auth )
 composer require laravel/ui --dev
 php artisan ui vue --auth
 composer dump-autoload
+npm run dev
 
 
 
