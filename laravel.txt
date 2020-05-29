@@ -12,10 +12,7 @@ npm run dev
     ## 1. 
     
        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'phone_number' => 'required|min:11|max:13|unique:users,phone_number',
-            'password' => 'required|min:6',
+            'email' => 'required|email|unique:users,email'
         ]);
 
         if ($validator->fails()) {
@@ -40,9 +37,7 @@ npm run dev
      ## 1.
           try{
             User::create([
-                'name' => $request->input('name'),
                 'email' => strtolower($request->input('email')) ,
-                'phone_number' => $request->input('phone_number'),
                 'password' => bcrypt($request->input('password')),
                 'email_verification_token' => uniqid(time().$request->input('email'), true).Str::random(4)
             ]);
@@ -64,10 +59,6 @@ npm run dev
 
                  $request->validate([
                     'name' => 'required|regex:/^[a-z A-Z]+$/u|max:255|min:3',
-                    'email' => 'required',
-                    'phone_number' => 'required|numeric',
-                    'university' => 'required|regex:/^[a-z A-Z]+$/u',
-                    'ielts' => 'nullable',
                ]);
 
 
@@ -112,3 +103,10 @@ npm run dev
           @guest()
                 <a href="{{route('llclogin')}}">Login</a> <a href="{{route('llcregister')}}">Register</a>
           @endguest
+
+
+      Problem foreign key:
+
+      unsignedInteger - Not working
+
+      unsignedBigInteger - Working
