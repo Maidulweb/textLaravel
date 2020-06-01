@@ -67,6 +67,21 @@ npm run dev
                    $newvariable ->save();
                    return redirect()->route('mi7')->with('status', 'Application submitted successfully!');
                }
+               
+               
+       #### Get Product ####
+       
+      
+       Product::where('slug', $slug)->where('active', 1)->first();
+       Product::select(['id', 'title', 'slug', 'image', 'price', 'sale_price'])->where('active', 1)->paginate(6);
+       
+       $products = Product::orderBy('id', 'desc')->get();
+       return view('pages.products.index')->with('products', $products);
+       
+       
+       #### Get Product by input ####
+       
+       Product::findOrFail($request->input('product_id'));
        
        #### Errors Message ####
        
