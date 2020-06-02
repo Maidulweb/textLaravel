@@ -83,6 +83,23 @@ npm run dev
        
        Product::findOrFail($request->input('product_id'));
        
+       
+       #### Image upload ####
+       
+       if($request->hasFile('product_image')){
+          $image = $request->file('product_image');
+          $img = time(). '.' . $image->getClientOriginalExtension();
+          $location = public_path('images/products/'.$img);
+          Image::make($image)->save($location);
+
+          $feature_image = new FeatureImage;
+          $feature_image->product_id = $product->id;
+          $feature_image->image = $img;
+          $feature_image->save();
+          
+          
+          
+       
        #### Errors Message ####
        
         @if ($errors->any())
