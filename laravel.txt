@@ -137,6 +137,22 @@ npm run dev
                 <a href="{{route('llclogin')}}">Login</a> <a href="{{route('llcregister')}}">Register</a>
           @endguest
 
+    
+    
+      
+      #### Title  ####
+      
+      <title>
+            @yield('title', 'Ecommerce')
+      </title>
+      
+      @section('title')
+        {{ $products->title }} - Ecommerce
+      @endsection
+      
+
+
+
 
       Problem foreign key:
 
